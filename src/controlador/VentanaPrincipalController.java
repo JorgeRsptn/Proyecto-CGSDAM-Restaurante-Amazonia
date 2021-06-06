@@ -69,6 +69,7 @@ public class VentanaPrincipalController {
     @FXML
     private JFXButton btnSalirPpal;
 
+    //*************************/
 	
 
 /**
