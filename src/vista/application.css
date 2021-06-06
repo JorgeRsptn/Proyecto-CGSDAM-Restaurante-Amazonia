@@ -1,0 +1,135 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+/* :root {
+  --primary: #b1bf57;
+  --primaryLight: #e5f286;
+  --prymaryDark: #7f8f28;
+  --secundary: #b78d7f;
+  --secundaryLight: #eabdae;
+  --secundaryDark: #866053;
+}*/
+
+/***Bases de aplicación */
+
+#baseLogin , #anchBaseGerente, #anchProdImagen {
+	-fx-background-image:url("../resources/texturaHipster.jpg");
+}
+
+#baseMesas {
+	-fx-background-image:url("../resources/texturaHipster.jpg");
+}
+#basePpal {
+	-fx-background-image:url("../resources/texturaHipster.jpg");
+}
+
+/***Fondos principales */
+#ancSelectPedir, #anchModMesa, #anchCuentaMesa, #anchCierraMesa, #baseResultados, #baseInfoGral, #anchVisual {
+	-fx-background-color: #b1bf57;
+}
+
+#btnModificarPr, #lblFacturacion, #lblConsumiciones, #lblFacturacionGral, #lblConsumicionesGral {
+	-fx-background-color: #eabdae;
+}
+
+#tabPaneComp {
+	-fx-color: #eabdae;
+	
+	-fx-border-width: 5;
+	-fx-border-color: #b78d7f;
+}
+
+#btnSumar, #btnRestar, #btnPedirSumar, #btnPedirRestar {
+	-fx-border-width: 2px;
+	-fx-border-color: #866053;
+	-fx-background-color:#b1bf57;
+}
+
+#tblPedir {
+	-fx-background-color: #eabdae;
+}
+#lblvisualMesa , #lblModMesa, #lblCuentaMesa, #lblCierraMesa {
+	-fx-background-color: #b78d7f;
+}
+
+#anchorVisualizar, #anchorCuenta, #anchorPedir, #anchorSalir, #anchorCerrarMesa {
+	-fx-background-color: #b1bf57;
+	-fx-border-radius:30px;
+}
+
+#resultado, #anchBaseProductos  {
+	-fx-background-color: #eabdae;
+}
+
+#lblTotal, #lblConsTotal {
+	-fx-border-color: #b78d7f;
+	-fx-background-color: #e5f286;
+}
+
+/*Botones */
+
+
+#btnModificarPed, #btnPedirFx {
+	-fx-background-color: #7f8f28;
+	-fx-border-width: 2px;
+	-fx-border-color: #866053;
+}
+
+#btnCaja , #btnArqueo , #btnEstadisticas, #btnPedidos, #btnRoturaStock, #btnSalir, #tblInfoEmpleados, #tblInfoGralEmpleados, #tblPedidos {
+	-fx-background-color:#e5f286;
+}
+
+#txtCantModificar, #lblCantidad, #lblProducto, #lblmostrar, #txtCantidad  {
+	-fx-background-color: #e5f286;
+	
+}
+
+
+#lblPpal {
+	-fx-color: #eabdae;
+}
+
+#paneLogin {
+	-fx-border-radius : 20px;
+}
+
+#anchorLogin {
+	-fx-background-color: #b1bf57;
+	-fx-alignment: center;
+}
+
+
+#panelOpciones {
+	-fx-background-color: #b1bf57;
+	-fx-alignment: center;
+}
+
+
+#bordePantalla {
+	-fx-background-color: #b78d7f;
+	
+}
+
+#pantalla {
+	-fx-background-color: #b1bf57;
+	-fx-alignment: center;
+	-fx-border-width:5px;
+	-fx-border-color: #b78d7f;
+}
+
+#mesa1 :clicked {
+	-fx-cursor:hand ;
+}
+
+.fondoAncPpal {
+	-fx-background-color: #e5f286;
+	
+	
+}
+.fondoImgPpal {
+		-fx-background-color: #eabdae;
+}
+
+#btnPrintGral, #btnPrint {
+	-fx-background-color:  #b78d7f;
+	-fx-border-radius: 10%;	
+}

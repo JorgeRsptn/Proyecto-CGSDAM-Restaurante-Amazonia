@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="basePpal" onMouseClicked="#salirApp" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.VentanaPrincipalController">
+   <children>
+      <AnchorPane prefHeight="150.0" prefWidth="1200.0" AnchorPane.bottomAnchor="650.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="lblPpal" alignment="CENTER" contentDisplay="CENTER" layoutX="336.0" layoutY="16.0" prefHeight="133.0" prefWidth="644.0" text="Elige una mesa: ">
+               <font>
+                  <Font name="Bauhaus 93" size="72.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <GridPane gridLinesVisible="true" layoutX="337.0" layoutY="29.0" prefHeight="552.0" prefWidth="644.0" AnchorPane.bottomAnchor="20.0" AnchorPane.topAnchor="150.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <AnchorPane prefHeight="88.0" prefWidth="45.0" styleClass="fondoAncPpal">
+               <children>
+                  <ImageView fx:id="mesa1" fitHeight="150.0" fitWidth="200.0" layoutX="33.0" layoutY="30.0" onMouseClicked="#irMesa" pickOnBounds="true" preserveRatio="true" styleClass="fondoImgPpal" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="30.0">
+                     <image>
+                        <Image url="@../resources/1.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="fondoImgPpal" GridPane.columnIndex="1">
+               <children>
+                  <ImageView fx:id="mesa2" fitHeight="150.0" fitWidth="200.0" layoutX="33.0" layoutY="17.0" onMouseClicked="#irMesa" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="17.0">
+                     <image>
+                        <Image url="@../resources/2.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="fondoAncPpal" GridPane.columnIndex="2">
+               <children>
+                  <ImageView fx:id="mesa3" fitHeight="150.0" fitWidth="200.0" layoutX="32.0" layoutY="17.0" onMouseClicked="#irMesa" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="17.0">
+                     <image>
+                        <Image url="@../resources/3.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" styleClass="fondoImgPpal" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fx:id="mesa4" fitHeight="150.0" fitWidth="200.0" layoutX="33.0" layoutY="17.0" onMouseClicked="#irMesa" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="17.0">
+                     <image>
+                        <Image url="@../resources/4.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" styleClass="fondoAncPpal" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fx:id="mesa5" fitHeight="150.0" fitWidth="200.0" layoutX="33.0" layoutY="17.0" onMouseClicked="#irMesa" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="17.0">
+                     <image>
+                        <Image url="@../resources/5.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" styleClass="fondoImgPpal" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fx:id="mesa6" fitHeight="150.0" fitWidth="200.0" layoutX="32.0" layoutY="17.0" onMouseClicked="#irMesa" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="17.0">
+                     <image>
+                        <Image url="@../resources/6.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+            <AnchorPane layoutX="618.0" layoutY="167.0" prefHeight="200.0" prefWidth="200.0" styleClass="fondoAncPpal" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fx:id="mesa7" fitHeight="150.0" fitWidth="200.0" layoutX="33.0" layoutY="14.0" onMouseClicked="#irMesa" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="14.0">
+                     <image>
+                        <Image url="@../resources/7.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" styleClass="fondoImgPpal" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fx:id="mesa8" fitHeight="150.0" fitWidth="200.0" layoutX="33.0" layoutY="14.0" onMouseClicked="#irMesa" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="14.0">
+                     <image>
+                        <Image url="@../resources/8.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" styleClass="fondoAncPpal" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fx:id="mesa9" fitHeight="150.0" fitWidth="200.0" layoutX="32.0" layoutY="14.0" onMouseClicked="#irMesa" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="14.0">
+                     <image>
+                        <Image url="@../resources/9.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+         </children>
+      </GridPane>
+      <JFXButton fx:id="btnSalirPpal" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="1015.0" layoutY="720.0" onMouseClicked="#salirApp" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: #eabdae;;" text="Salir" AnchorPane.bottomAnchor="50.0">
+         <font>
+            <Font name="Bodoni MT" size="20.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

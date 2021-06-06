@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="711.0" prefWidth="812.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.VistaInfoGralController">
+   <children>
+      <AnchorPane fx:id="baseInfoGral" layoutY="-6.0" prefHeight="658.0" prefWidth="812.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="29.0" prefHeight="38.0" prefWidth="254.0" text="Total Facturado">
+               <font>
+                  <Font name="Bodoni MT" size="30.0" />
+               </font></Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="453.0" layoutY="29.0" prefHeight="38.0" prefWidth="276.0" text="Total consumiciones">
+               <font>
+                  <Font name="Bodoni MT" size="30.0" />
+               </font></Label>
+            <Label fx:id="lblFacturacionGral" alignment="CENTER" contentDisplay="CENTER" layoutX="113.0" layoutY="102.0" prefHeight="17.0" prefWidth="203.0" text="Sin facturación">
+               <font>
+                  <Font name="Bodoni MT" size="30.0" />
+               </font></Label>
+            <Label fx:id="lblConsumicionesGral" alignment="CENTER" contentDisplay="CENTER" layoutX="453.0" layoutY="102.0" prefHeight="38.0" prefWidth="276.0" text="Sin consumiciones">
+               <font>
+                  <Font name="Bodoni MT" size="30.0" />
+               </font></Label>
+            <TableView fx:id="tblInfoGralEmpleados" layoutX="107.0" layoutY="185.0" prefHeight="401.0" prefWidth="626.0">
+              <columns>
+                <TableColumn fx:id="colEmpleadoInforme" prefWidth="289.0" text="Empleado" />
+                <TableColumn fx:id="colFacturadoTotal" prefWidth="141.0" text="Facturado" />
+                  <TableColumn fx:id="colConsumicionesTotal" prefWidth="126.0" text="Consumiciones" />
+              </columns>
+            </TableView>
+            <JFXButton fx:id="btnPrintGral" layoutX="225.0" layoutY="617.0" onMouseClicked="#print" prefHeight="49.0" prefWidth="362.0" text="Guardar">
+               <font>
+                  <Font name="Bodoni MT" size="30.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
