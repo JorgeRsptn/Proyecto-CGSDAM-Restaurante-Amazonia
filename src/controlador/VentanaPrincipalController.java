@@ -88,11 +88,17 @@ public class VentanaPrincipalController {
 	}
 
 	
+	/**
+	 * Recibe el botón que ha sido pulsado y abre una ventana modal que efectuara los pedidos 
+	 * y modificaciones sobre la mesa escogida.
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void irMesa(MouseEvent event) {
 		int mesa=0;
 		ImageView evento = (ImageView) event.getSource();
-		Alert alert;
+
 		System.out.println(evento.getId());
 		switch(evento.getId()) {
 		case "mesa1":

@@ -11,18 +11,25 @@
 
 /***Bases de aplicación */
 
-#baseLogin , #anchBaseGerente, #anchProdImagen {
+#baseLogin , #anchBaseGerente, #anchProdImagen, #fondoAdmin, #baseMesas, #basePpal {
 	-fx-background-image:url("../resources/texturaHipster.jpg");
 }
 
-#baseMesas {
-	-fx-background-image:url("../resources/texturaHipster.jpg");
+
+/***********Vista de Administrador */
+
+/*Imagenes como botones */
+
+#imgAdminbtn1, #imgAdminbtn2, #imgAdminbtn3, #imgAdminbtn4, #imgAdminbtn5, #imgAdminbtn7  {
+	
+	-fx-background-color: #b1bf57;
 }
-#basePpal {
-	-fx-background-image:url("../resources/texturaHipster.jpg");
-}
+
+
+
 
 /***Fondos principales */
+
 #ancSelectPedir, #anchModMesa, #anchCuentaMesa, #anchCierraMesa, #baseResultados, #baseInfoGral, #anchVisual {
 	-fx-background-color: #b1bf57;
 }
