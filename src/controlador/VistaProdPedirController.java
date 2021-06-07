@@ -23,6 +23,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import modelo.Validaciones;
 import modelo.DAO.DaoPresentaProd;
 import modelo.DAO.PedidosDAO;
@@ -95,6 +96,8 @@ public class VistaProdPedirController implements Initializable {
 	private int mesa;
 
 	private ProductoDto prodAniadir;
+	
+
 	
 
 	/**
@@ -201,7 +204,7 @@ public class VistaProdPedirController implements Initializable {
 				alert.showAndWait();
 			}
 		}
-		txtCantidad.setText("");
+		txtCantidad.setText("0");
 		lblmostrar.setText("Sin selección");
 	}
 

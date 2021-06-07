@@ -12,7 +12,7 @@
 /***Bases de aplicación */
 
 #baseLogin , #anchBaseGerente, #anchProdImagen, #fondoAdmin, #baseMesas, #basePpal {
-	-fx-background-image:url("../resources/texturaHipster.jpg");
+	-fx-background-image:url("../resources/textura.jpg");
 }
 
 

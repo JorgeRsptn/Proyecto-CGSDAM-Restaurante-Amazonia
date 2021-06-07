@@ -11,6 +11,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -159,9 +160,20 @@ public class VentanaPrincipalController {
 			Scene scene = new Scene(root,(screenSize.getWidth()),(screenSize.getHeight()*0.9));	
 			scene.getStylesheets().add(getClass().getResource("../vista/application.css").toExternalForm());
 			Stage stage = new Stage();			
-			stage.initModality(Modality.APPLICATION_MODAL);			
+			//stage.initModality(Modality.APPLICATION_MODAL);			
 			stage.setScene(scene);
-			stage.showAndWait();
+			stage.show(); 
+			
+		/*	 Stage stage = new Stage();
+			    Parent root = FXMLLoader.load( VentanaPrincipalController.class.getResource("VentanaMesa.fxml"));
+			    
+			    stage.setTitle("My modal window");
+			    stage.initModality(Modality.WINDOW_MODAL);
+			    stage.initOwner(
+			        ((Node)event.getSource()).getScene().getWindow() );
+			    stage.setScene(new Scene(root));
+			    stage.showAndWait();
+			*/
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -175,4 +187,5 @@ public class VentanaPrincipalController {
 		stage.close();         
     }
 
+   
 }

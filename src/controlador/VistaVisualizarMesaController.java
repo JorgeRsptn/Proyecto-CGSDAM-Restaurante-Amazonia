@@ -89,9 +89,6 @@ public class VistaVisualizarMesaController implements Initializable {
 	
 	@FXML
 	private Label lblFlagMesa;
-
-    @FXML
-    private JFXButton btnSalir;
     
 	@FXML
 	private TableView<DetallePedidoDto> tblPedidos;    
@@ -248,7 +245,7 @@ public class VistaVisualizarMesaController implements Initializable {
 		/*Pendiente de preparar la impresión implementando printable en otro fxml*/
 	
 	}
-
+	
 	/**
 	 * Calcula los totales a mostrar en la interfaz
 	 */
