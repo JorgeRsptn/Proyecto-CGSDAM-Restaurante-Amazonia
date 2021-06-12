@@ -7,14 +7,14 @@ import java.sql.SQLException;
 public class SingleConnect {
 
 	private static Connection conexion = null;
+	
+	private String driver = "com.mysql.cj.jdbc.Driver";
+	private String usuario = "root";
+	private String password = "";
+	private String nombreBD = "rest_amazonia";
+	private String url = "jdbc:mysql://localhost:3306/"+nombreBD+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
 	private SingleConnect(){
-
-		String driver = "com.mysql.cj.jdbc.Driver";
-		String usuario = "root";
-		String password = "";
-		String nombreBD = "rest_amazonia";
-		String url = "jdbc:mysql://localhost:3306/"+nombreBD+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
 		try{
 			Class.forName(driver);
