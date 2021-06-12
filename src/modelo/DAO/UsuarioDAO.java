@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import modelo.DTO.UsuarioDto;
-import modelo.conexion.ConexionMySql;
 import modelo.conexion.SingleConnect;
 
 

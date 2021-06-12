@@ -5,54 +5,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.time.temporal.ChronoField;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Calendar;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import modelo.DTO.DetallePedidoDto;
 import modelo.DTO.InfoPedidosDTO;
-import modelo.conexion.ConexionMySql;
 import modelo.conexion.SingleConnect;
 
 public class InformesCierresDAO {
 
-	private static ConexionMySql objConexion;
-
-	private ArrayList<DetallePedidoDto> arrayAux;
-
+	
+	
 	/**
-	 * @return the pedidoVO
+	 * Recupera el total facturado y cobrado ahasta el momento en el día.
+	 * @return
 	 */
 
-	/**
-	 * @param pedidoVO the pedidoVO to set
-	 */
-
-	/**
-	 * @return the objConexion
-	 */
-	public ConexionMySql getObjConexion() {
-		return objConexion;
-	}
-	/**
-	 * @param objConexion the objConexion to set
-	 */
-	public void setObjConexion(ConexionMySql objConexion) {
-		InformesCierresDAO.objConexion = objConexion;
-	}
-	/**
-	 * @return the pedidoPojo
-	 */
-
-
-
-
-	@SuppressWarnings("finally")
 	public static InfoPedidosDTO arqueo () {
 
 
@@ -122,19 +90,23 @@ public class InformesCierresDAO {
 				statement.close();
 			} catch (Exception e) {
 			}
-
-			return informe;
 		}
+
+		return informe;
 	}
 
+	
+	/**
+	 * Comprueba que no falten mesas por pagar
+	 * @return
+	 */
 	public static String comprobarCierreCaja() {
 
 
 		String respuesta=null;
 		ResultSet result=null;
 
-		Connection conexion=null;
-		objConexion=new ConexionMySql();
+		Connection conexion=SingleConnect.getConnection();
 		PreparedStatement statement=null;
 
 		conexion = SingleConnect.getConnection();	
@@ -165,6 +137,10 @@ public class InformesCierresDAO {
 	}
 
 
+	/**
+	 * Trás comprobar que todo está pagado devuelve la información de lo facturado en el día y envía todas los datos a la tabla encargada del historico.
+	 * @return
+	 */
 	public static String CierreCaja() {
 
 		String respuesta=null;
@@ -177,7 +153,7 @@ public class InformesCierresDAO {
 		String cerrarDia= "INSERT INTO historico (cantidad, empleado, horaPagado, horaPedido, idProd, mesa, precio, total) SELECT p.cantidad AS cantidad, p.empleado AS empleado, p.horaPagado as hPagado,p.horaPed as hPed,p.idProd as id, p.mesa AS mesa,  a.precio  AS precio, (p.cantidad*a.precio) AS total FROM pedidos as p JOIN productos as a ON a.idProd=p.idProd";
 		String vaciar = "DELETE FROM pedidos";
 
-				try {
+		try {
 			if (conexion != null) {
 				statement = conexion.createStatement();
 				statement.executeUpdate(cerrarDia);
@@ -201,13 +177,15 @@ public class InformesCierresDAO {
 				statement.close();
 			} catch (Exception e) {
 			}
-			try {
-				objConexion.desconectar();
-			} catch (Exception e) {
-			}
+
 		}
 		return respuesta;
 	}
+	
+	/**
+	 * Devuelve los detalles de facturación divididos por empleado
+	 * @return
+	 */
 
 	public static InfoPedidosDTO estadisticasGralEmpleado() {
 		String respuesta=null;
@@ -225,11 +203,9 @@ public class InformesCierresDAO {
 
 		conexion = SingleConnect.getConnection();
 
-		//String arqueo="SELECT SUM(t.consumiciones)as TOTAL_cONS ,SUM(t.total) TOTAL_FACT FROM (SELECT p.cantidad as CONSUMICIONES, p.cantidad*a.precio AS total FROM pedidos as p JOIN articulos as a ON a.nombre=p.articulo WHERE pagado = 1) AS t";
-
 		String infoEmpleado = "SELECT h.mesa, h.empleado, h.idProd, h.cantidad, h.idLinea, s.nombre, h.precio, h.total FROM historico as h JOIN productos as s ON s.idProd = h.idProd GROUP BY h.empleado";
 
-	//	String infofecha = "SELECT t.fecha as fechaT, SUM(t.consumiciones) as TOTAL_cONS ,SUM(t.total) AS TOTAL_FACT FROM (SELECT p.fecha, p.cantidad as CONSUMICIONES, p.total AS total FROM historico as p) AS t GROUP BY t.fecha";
+		//	String infofecha = "SELECT t.fecha as fechaT, SUM(t.consumiciones) as TOTAL_cONS ,SUM(t.total) AS TOTAL_FACT FROM (SELECT p.fecha, p.cantidad as CONSUMICIONES, p.total AS total FROM historico as p) AS t GROUP BY t.fecha";
 
 		try {
 			if (conexion != null) {
@@ -239,7 +215,7 @@ public class InformesCierresDAO {
 				result = statement.executeQuery();
 
 				if(result != null) {
-					
+
 					while(result.next()) {
 
 						int mesa = 0;
@@ -282,7 +258,7 @@ public class InformesCierresDAO {
 		}
 		return informe;
 	}
-	
+
 	/*
 	public static InformesCierresVO estadisticasGralFecha() {
 		String respuesta=null;
@@ -350,14 +326,10 @@ public class InformesCierresDAO {
 				statement.close();
 			} catch (Exception e) {
 			}
-			try {
-				objConexion.desconectar();
-			} catch (Exception e) {
-			}
 		}
 		return informe;
 	}
-*/
+	 */
 }
 
 

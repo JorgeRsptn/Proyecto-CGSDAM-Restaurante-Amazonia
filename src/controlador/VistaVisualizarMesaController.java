@@ -5,13 +5,13 @@ package controlador;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import com.jfoenix.controls.JFXButton;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -21,7 +21,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import modelo.Validaciones;
 import modelo.DAO.PedidosDAO;
 import modelo.DTO.DetallePedidoDto;
@@ -161,11 +160,9 @@ public class VistaVisualizarMesaController implements Initializable {
 	@FXML
 	private void seleccionPedido(MouseEvent event) {
 		DetallePedidoDto articulo = this.tblPedidos.getSelectionModel().getSelectedItem();
-		//System.out.println(articulo.getArticulo());
 		if(articulo != null) {
 			this.lblProducto.setText(articulo.getNombreArt());
 			this.lblCantidad.setText(String.valueOf(articulo.getCantidad()));
-			System.out.println(articulo.getNombreArt());
 		}
 	}
 	
@@ -178,7 +175,6 @@ public class VistaVisualizarMesaController implements Initializable {
 	void modificarMesa(MouseEvent event) {
 
 		DetallePedidoDto pedido = this.tblPedidos.getSelectionModel().getSelectedItem();
-		System.out.println("En modificar: idPedido - "+ pedido.getIdPedido() + "mesa - "+ pedido.getMesa() + "nombre articulo - "+ pedido.getNombreArt());
 
 		if (Validaciones.isNumPos(txtCantModificar.getText().trim()) == -1) {
 
@@ -251,13 +247,10 @@ public class VistaVisualizarMesaController implements Initializable {
 	 */
 	void calcularTotales() {
 		double totalFactura=0;
-		int totalConsumiciones=0;
 
 		for (int i= 0;i<tblPedidos.getItems().size();i++){
 			totalFactura += Double.valueOf(String.valueOf(tblPedidos.getColumns().get(4).getCellObservableValue(i).getValue()));
-			totalConsumiciones += Integer.valueOf(String.valueOf(tblPedidos.getColumns().get(2).getCellObservableValue(i).getValue()));
 		}
-		System.out.println(totalConsumiciones);
 		lblTotal.setText(String.valueOf(totalFactura));
 	}
 

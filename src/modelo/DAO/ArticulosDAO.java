@@ -7,9 +7,7 @@ import java.sql.Statement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import modelo.DTO.InfoPedidosDTO;
 import modelo.DTO.ProductoDto;
-import modelo.conexion.ConexionMySql;
 import modelo.conexion.SingleConnect;
 
 public class ArticulosDAO {

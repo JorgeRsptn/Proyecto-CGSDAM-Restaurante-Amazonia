@@ -40,15 +40,15 @@ public class LoginUIController {
 
 	@FXML
 	private PasswordField passpruebafx;
+	
 	/**
-	 * 
-	 * @param event
-	 * 
 	 * Método que pide la validación de los datos introducidos por el usuario y comprueba si son correctos para permitir el acceso. 
 	 * 
 	 * Llama al método que lanza las nuevas ventanas.
-	 */
-	
+	 * 
+	 * @param event
+	 * 
+	 */	
 	@FXML
 	void entrarLoggin(ActionEvent event) {
 
@@ -59,9 +59,7 @@ public class LoginUIController {
 		String pass = miLogica.encriptPassSHA1(txtpassLoggin.getText().trim());
 		limpiarDatos();
 
-		System.out.println("Usuario = "+user+" Pass = "+pass);
 		String respuesta = validacion.entradasLogin(user, pass);
-		System.out.println(respuesta);
 
 		if(respuesta.equals("valido")) {
 

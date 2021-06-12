@@ -65,11 +65,10 @@ public class VistaInfoGralController implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle bundle) {
 		
-		System.out.println("Inicializa tabla");
+
 		this.colConsumicionesTotal.setCellValueFactory((new PropertyValueFactory<>("cantidad")));
 		this.colFacturadoTotal.setCellValueFactory((new PropertyValueFactory<>("total")));
 		this.colEmpleadoInforme.setCellValueFactory((new PropertyValueFactory<>("empleado")));
-		System.out.println("Carga datos");
 		
 		informeEmp = FXCollections.observableArrayList();
 		InfoPedidosDTO respuesta = InformesCierresDAO.estadisticasGralEmpleado();
@@ -131,10 +130,6 @@ public class VistaInfoGralController implements Initializable {
             newFolder = new File(downloadPath2);
             dirCreated = newFolder.mkdir();
 
-            // get current time
-            //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-M-dd_HH-mm-ss");
-            //LocalDateTime now = LocalDateTime.now();
-            //System.out.println(dtf.format(now));
             String fileName2 = "ResumenFechas_" + dtf.format(now) + ".csv";
 
             File statText2 = new File(downloadPath2 + "/" + fileName2);

@@ -86,7 +86,6 @@ public class VentanaMesaController {
 	@FXML
 	void estadoMesa(MouseEvent event) {
 		Pane newLoadedPane = null;
-		System.out.println("En ventana de mesa visualizar: " + mesa);
 		pantalla.getChildren().clear();
 		try {			
 			newLoadedPane = FXMLLoader.load(getClass().getResource("../vista/VistaVisualizarMesa.fxml"));
@@ -102,7 +101,6 @@ public class VentanaMesaController {
 	 */
 	@FXML
 	void verProductos(MouseEvent event) {
-		System.out.println("En ventana de mesa : " + mesa);
 		
 		Pane newLoadedPane = null;
 		pantalla.getChildren().clear();

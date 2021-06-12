@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -87,13 +88,24 @@ public class VistaGerenteController {
 			mostrarVentanaNueva("VistaResultados.fxml");
 			String respuesta = InformesCierresDAO.CierreCaja();
 			if (respuesta.equals("Caja Cerrada")) {
-				System.out.println("Alert informativo de correcto");
+				Alert alert = new Alert (Alert.AlertType.INFORMATION);
+				alert.setHeaderText(null);
+				alert.setTitle("Caja Cerrada");
+				alert.setContentText("Se cerró la facturación del día");
+				alert.showAndWait();
 			}else {
-				System.out.println("Alert informativo de error");
+				Alert alert = new Alert (Alert.AlertType.ERROR);
+				alert.setHeaderText(null);
+				alert.setTitle("Error al cerrar la caja");
+				alert.setContentText("NO se cerró la facturación del día");
+				alert.showAndWait();
 			}
 		}else {
-			//Alert de que faltan mesas sin pagar
-			System.out.println("Faltan por pagar");
+			Alert alert = new Alert (Alert.AlertType.WARNING);
+			alert.setHeaderText(null);
+			alert.setTitle("No se pudo cerrar caja");
+			alert.setContentText("Faltan mesas por cerrar");
+			alert.showAndWait();
 		}
 
 

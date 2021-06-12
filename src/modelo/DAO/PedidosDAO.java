@@ -4,41 +4,29 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import modelo.DTO.DetallePedidoDto;
 import modelo.DTO.PedidoDto;
-import modelo.conexion.ConexionMySql;
 import modelo.conexion.SingleConnect;
 
 public class PedidosDAO {
-	private static ConexionMySql objConexion;
 
-	/**
-	 * @return the objConexion
-	 */
-	public ConexionMySql getObjConexion() {
-		return objConexion;
-	}
-	/**
-	 * @param objConexion the objConexion to set
-	 */
-	public void setObjConexion(ConexionMySql objConexion) {
-		PedidosDAO.objConexion = objConexion;
-	}
+/**
+ * Guarda los pedidos realizados en la base de datos.
+ * @param pedido
+ * @return
+ */
 
 
 	public static String registraPedido (PedidoDto pedido) {
 		String respuesta=null;
 
 		Connection conexion=null;
-		objConexion=new ConexionMySql();
 		PreparedStatement statement=null;
 
 
-		conexion = objConexion.getConnection2();
+		conexion = SingleConnect.getConnection();
 
 		String insert="INSERT INTO pedidos (mesa, empleado, idProd, cantidad) VALUES (?,?,?,?)";
 
@@ -67,11 +55,14 @@ public class PedidosDAO {
 			e.printStackTrace();
 		}
 
-		objConexion.desconectar();
-
-
 		return respuesta;
 	}
+	
+	/**
+	 * Recupera los pedidos no pagados asociados a una mesa
+	 * @param mesa
+	 * @return un observable list con la relación de pedidos.
+	 */
 	
 	public static ObservableList<DetallePedidoDto> CargaPedidos(int mesa) {
 
@@ -80,7 +71,6 @@ public class PedidosDAO {
 		DetallePedidoDto auxPed;		
 
 		Connection conexion=null;
-		objConexion=new ConexionMySql();
 		PreparedStatement statement=null;
 		ResultSet result;
 /*
@@ -89,7 +79,7 @@ public class PedidosDAO {
 		String query ="SELECT p.id , p.articulo, p.cantidad, a.precio, (p.cantidad*a.precio) AS total  , p.empleado  FROM pedidos as p JOIN articulos as a ON a.nombre=p.articulo WHERE mesa = ? and pagado = 0";
 */
 		
-		conexion = objConexion.getConnection2();
+		conexion = SingleConnect.getConnection();
 		
 		String query = "SELECT p.mesa, p.empleado,  p.idProd, p.cantidad, p.idPedido, s.nombre, s.precio, (p.cantidad*s.precio) AS total FROM pedidos as p JOIN productos as s ON s.idProd = p.idProd WHERE mesa = ? and pagado = 0";
 		try {
@@ -131,23 +121,25 @@ public class PedidosDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		objConexion.desconectar();
-
-
-		return observable;
+	return observable;
 
 	}
 
+	/**
+	 * Realiza las modificaciones de cantidad necesarias sobre un pedido anterior.
+	 * @param id
+	 * @param cantidad
+	 * @return devuelve una confirmación de la rrealización o no de la modificación
+	 */
 	public static String modificaPedido (int id, int cantidad) {
 		String respuesta=null;
 
 		Connection conexion=null;
-		objConexion=new ConexionMySql();
+
 		PreparedStatement statement=null;
 
 
-		conexion = objConexion.getConnection2();
+		conexion = SingleConnect.getConnection();
 
 		String insert="UPDATE pedidos SET cantidad = ? WHERE idPedido = ?";
 
@@ -173,16 +165,19 @@ public class PedidosDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		objConexion.desconectar();
 		return respuesta;		
 	}
 	
+	/**
+	 * Se encarga de poner como pagados todos los pedidos de la mesa que recibe por parametro. 
+	 * @param mesa
+	 * @return Respuesta avisando de si se han producido los cambios.
+	 */
 	
 	public static String pagar(int mesa) {
 		String respuesta=null;
 
 		Connection conexion=null;
-		objConexion=new ConexionMySql();
 		PreparedStatement statement=null;
 		conexion = SingleConnect.getConnection();
 
@@ -209,11 +204,6 @@ public class PedidosDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		objConexion.desconectar();
-
-
-
 		return respuesta;		
 	}
 

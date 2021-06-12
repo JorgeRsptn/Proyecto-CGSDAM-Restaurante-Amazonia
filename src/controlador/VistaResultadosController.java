@@ -11,7 +11,9 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+
 import com.jfoenix.controls.JFXButton;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -61,11 +63,10 @@ public class VistaResultadosController implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle bundle) {
 		
-		System.out.println("Inicializa tabla");
 		this.colConsumicionesTotal.setCellValueFactory((new PropertyValueFactory<>("cantidad")));
 		this.colFacturadoTotal.setCellValueFactory((new PropertyValueFactory<>("total")));
 		this.colEmpleadoInforme.setCellValueFactory((new PropertyValueFactory<>("empleado")));
-		System.out.println("Carga datos");
+
 		
 		informe = FXCollections.observableArrayList();
 		InfoPedidosDTO respuesta = InformesCierresDAO.arqueo();
@@ -77,7 +78,7 @@ public class VistaResultadosController implements Initializable {
 		
 		lblConsumiciones.setText(String.valueOf(totalCons));
 		lblFacturacion.setText(String.valueOf(totalFact));
-		//makeFileTxt(totalCons, totalFact, informe);		
+		
 	}
     
 	public String makeFileTxt(int cons, double fact, ObservableList list) {
@@ -88,13 +89,13 @@ public class VistaResultadosController implements Initializable {
             File newFolder = new File(downloadPath);
             boolean dirCreated = newFolder.mkdir();
 
-            // get current time
+
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-M-dd_HH-mm-ss");
             LocalDateTime now = LocalDateTime.now();
             System.out.println(dtf.format(now));
             String fileName = "Arqueo_" + dtf.format(now) + ".csv";
 
-            // Whatever the file path is.
+
             File statText = new File(downloadPath + "/" + fileName);
             FileOutputStream is = new FileOutputStream(statText);
             OutputStreamWriter osw = new OutputStreamWriter(is);

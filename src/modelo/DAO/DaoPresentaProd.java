@@ -4,28 +4,24 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import modelo.DTO.ProductoDto;
-import modelo.conexion.ConexionMySql;
+import modelo.conexion.SingleConnect;
 
 public class DaoPresentaProd {
 
-	private static ConexionMySql objConexion;
-	private ProductoDto producto;
-	
 	
 	public static ObservableList<ProductoDto> recuperaProd() {
 
 		ObservableList<ProductoDto> observable =  FXCollections.observableArrayList();
 		Connection conexion=null;
-		objConexion=new ConexionMySql();
+
 		Statement statement=null;
 		
 		ProductoDto auxProducto;
 
-		conexion = objConexion.getConnection2();
+		conexion = SingleConnect.getConnection();
 
 		String query ="SELECT DISTINCT p.idProd , p.nombre, p.precio, p.tipo, s.nowCant  FROM productos as p , stock as s where p.idProd = s.idProd";
 		
@@ -60,9 +56,6 @@ public class DaoPresentaProd {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		objConexion.desconectar();
-
 
 		return observable;
 	}
