@@ -15,8 +15,9 @@ public class DetallePedidoDto extends PedidoDto{
 
 
 	public DetallePedidoDto(int mesa, String empleado, int idProducto,
-			int cantidad, boolean invitado, int idPedido,
-			String nombreArt, Double precio, Double total) {
+							int cantidad, boolean invitado, int idPedido,
+							String nombreArt, Double precio, Double total) 
+	{
 		super(mesa, empleado, idProducto, cantidad, invitado);
 		this.idPedido = new SimpleIntegerProperty(idPedido);
 		this.nombreArt = new SimpleStringProperty(nombreArt);

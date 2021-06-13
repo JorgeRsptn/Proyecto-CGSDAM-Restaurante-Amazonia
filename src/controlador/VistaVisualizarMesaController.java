@@ -28,7 +28,21 @@ import modelo.DTO.DetallePedidoDto;
 public class VistaVisualizarMesaController implements Initializable {
 
 	private int mesa;
+	private DetallePedidoDto articulo;
+	
+	/**
+	 * @return the articulo
+	 */
+	public DetallePedidoDto getArticulo() {
+		return articulo;
+	}
 
+	/**
+	 * @param articulo the articulo to set
+	 */
+	public void setArticulo(DetallePedidoDto articulo) {
+		this.articulo = articulo;
+	}
 
 	/**
 	 * @return the mesa
@@ -142,13 +156,13 @@ public class VistaVisualizarMesaController implements Initializable {
 		int cantNow = 0;
 
 		cantNow = Integer.parseInt(txtCantModificar.getText());
-		if (cantNow >= 0 ) {
+		if (cantNow < articulo.getCantidad() ) {
 			txtCantModificar.setText(String.valueOf(cantNow + 1));
 		}else {
 			Alert alert = new Alert (Alert.AlertType.ERROR);
 			alert.setHeaderText(null);
 			alert.setTitle("Error de cantidad");
-			alert.setContentText("No se pueden introducir números menores que 0");
+			alert.setContentText("Realiza otro pedido si quieres añadir productos");
 			alert.showAndWait();
 		}
 	}
@@ -159,7 +173,7 @@ public class VistaVisualizarMesaController implements Initializable {
 	 */
 	@FXML
 	private void seleccionPedido(MouseEvent event) {
-		DetallePedidoDto articulo = this.tblPedidos.getSelectionModel().getSelectedItem();
+		articulo = this.tblPedidos.getSelectionModel().getSelectedItem();
 		if(articulo != null) {
 			this.lblProducto.setText(articulo.getNombreArt());
 			this.lblCantidad.setText(String.valueOf(articulo.getCantidad()));

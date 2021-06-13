@@ -89,6 +89,23 @@ public class VistaProdPedirController implements Initializable {
 	private ObservableList<ProductoDto> comida;
 
 	private int mesa;
+	
+	private ProductoDto articulo;
+	
+
+	/**
+	 * @return the articulo
+	 */
+	public ProductoDto getArticulo() {
+		return articulo;
+	}
+
+	/**
+	 * @param articulo the articulo to set
+	 */
+	public void setArticulo(ProductoDto articulo) {
+		this.articulo = articulo;
+	}
 
 	/**
 	 * @return the mesa
@@ -104,7 +121,7 @@ public class VistaProdPedirController implements Initializable {
 		this.mesa = mesa;
 	}
 
-	private ProductoDto articulo;
+
 
 
 	@FXML
@@ -130,19 +147,21 @@ public class VistaProdPedirController implements Initializable {
 
 		cantNow = Integer.parseInt(txtCantidad.getText());
 
-		if (cantNow >= 0 ) {
+		if (cantNow <= articulo.getStock() && articulo.getStock() > 0) {
 			txtCantidad.setText(String.valueOf(cantNow + 1));
 		}else {
 			Alert alert = new Alert (Alert.AlertType.ERROR);
 			alert.setHeaderText(null);
 			alert.setTitle("Error de cantidad");
-			alert.setContentText("No se pueden introducir números menores que 0");
+			alert.setContentText("Rotura de Stock");
 			alert.showAndWait();
 		}
 	}
 
 	@FXML
 	void pedir(MouseEvent event) {
+		
+		
 		String cantidad = txtCantidad.getText().trim();
 
 		if(cantidad.equals("")) {

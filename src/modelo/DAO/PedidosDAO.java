@@ -81,7 +81,11 @@ public class PedidosDAO {
 		
 		conexion = SingleConnect.getConnection();
 		
-		String query = "SELECT p.mesa, p.empleado,  p.idProd, p.cantidad, p.idPedido, s.nombre, s.precio, (p.cantidad*s.precio) AS total FROM pedidos as p JOIN productos as s ON s.idProd = p.idProd WHERE mesa = ? and pagado = 0";
+		String query = "SELECT p.mesa, p.empleado,  p.idProd, p.cantidad, p.idPedido,"
+					+ " s.nombre, s.precio, (p.cantidad*s.precio) AS total "
+					+ "FROM pedidos as p JOIN productos as s "
+					+ "ON s.idProd = p.idProd "
+					+ "WHERE mesa = ? and pagado = 0";
 		try {
 			if (conexion != null) {
 
